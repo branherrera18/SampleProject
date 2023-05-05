@@ -2,8 +2,12 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         id="SampleProject" version="3.0">
-    <display-name>HPlusSample</display-name>
+         id="WebApp_ID" version="3.0">
+    <display-name>SampleProject</display-name>  
+    <welcome-file-list>
+        <welcome-file>html/index.html</welcome-file>
+    </welcome-file-list>
+        
     <servlet>
         <servlet-name>GetServlet</servlet-name>
         <servlet-class>com.test.servlets.GetServlet</servlet-class>
