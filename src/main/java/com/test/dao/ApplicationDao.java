@@ -53,14 +53,15 @@ public class ApplicationDao {
            //set parameters with PreparedStatement
            PreparedStatement statement  = connection.prepareStatement(insertQuery);
            statement.setString(1,user.getUsername());
-           statement.setString(1,user.getPassword());
-           statement.setString(1,user.getFirstName());
-           statement.setString(1,user.getLastName());
-           statement.setInt(1,user.getAge());
-           statement.setString(1,user.getActivity());
+           statement.setString(2,user.getPassword());
+           statement.setString(3,user.getFirstName());
+           statement.setString(4,user.getLastName());
+           statement.setInt(5,user.getAge());
+           statement.setString(6,user.getActivity());
            
            //execute the statement
            rowsAffected = statement.executeUpdate();
+           
        } catch (SQLException e) {
        e.printStackTrace();
        }

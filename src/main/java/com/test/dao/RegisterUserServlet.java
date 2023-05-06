@@ -24,11 +24,11 @@ public class RegisterUserServlet extends HttpServlet{
         String password = req.getParameter("password");
         String firstName = req.getParameter("fname");
         String lastName = req.getParameter("lname");
-        String activity = req.getParameter("activity");
         int age = Integer.parseInt(req.getParameter("age"));
+        String activity = req.getParameter("activity");
         
         //fill it up in a User bean
-        User user = new User(password, username, firstName, lastName, age, activity);
+        User user = new User(username, password, firstName, lastName, age, activity);
         
         
         //call dao layer and save the user object to DB
@@ -64,6 +64,10 @@ public class RegisterUserServlet extends HttpServlet{
         page = MessageFormat.format(page, message);
         return page;
     }
-    
-    
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String page = getHTMLString(req.getServletContext().getRealPath("/html/register.html"), "");
+        resp.getWriter().write(page);
+    }
 }

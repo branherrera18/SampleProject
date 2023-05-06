@@ -2,22 +2,32 @@ package com.test.beans;
 
 public class User {
     
-    private String password;
     private String username;
+    private String password;
     private String firstName;
     private String lastName;
     private int age;
     private String activity;
 
-    public User(String password, String username, String firstName, String lastName, int age, String activity) {
-        this.password = password;
+//    public User(String password, String username, String firstName, String lastName, int age, String activity) {
+//        this.password = password;
+//        this.username = username;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.age = age;
+//        this.activity = activity;
+//    }
+
+    public User(String username, String password, String firstName, String lastName, int age, String activity) {
         this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.activity = activity;
     }
 
+    
     public String getActivity() {
         return activity;
     }
