@@ -11,6 +11,10 @@
     <servlet>
         <servlet-name>GetServlet</servlet-name>
         <servlet-class>com.test.servlets.GetServlet</servlet-class>
+        <init-param>
+            <param-name>URL</param-name>
+            <param-value>http://www.weatherservice.com</param-value>
+        </init-param>
     </servlet>
     
     <servlet-mapping>
