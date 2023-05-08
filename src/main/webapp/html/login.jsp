@@ -40,8 +40,9 @@
 
 
 	<section>
+	 
+        <%=displayDate()%>    
 	
-	<%=displayDate()%>
 	</section>
 	<section id="login" class="section">
 		<div class="container tagline">
@@ -87,6 +88,7 @@
 	</footer>
 	<!-- footer -->
 <%!
+
 
 public String displayDate(){
 	SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-mm-dd hh:mm");
