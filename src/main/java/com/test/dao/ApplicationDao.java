@@ -67,4 +67,34 @@ public class ApplicationDao {
        }
        return rowsAffected;
    }
+   
+   public boolean validateUser(String username, String password){
+       boolean isValidUser =false;
+       try {
+           
+           //get the connection for the database
+           Connection connection = DBConnection.getConnectionToDatabase();
+           
+           //write the insert query
+           String sql = "select* from users where username=? and password=?";
+           
+           //set parameters with PreparedStatement
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setString(1,username);
+           statement.setString(2,password);
+           
+           //execute the statement and check whether users exists
+           
+           ResultSet set = statement.executeQuery();
+           
+           while(set.next()){
+               isValidUser = true;
+           }
+           
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       return isValidUser;
+   }
+
 }
