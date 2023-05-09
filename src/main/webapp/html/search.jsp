@@ -27,21 +27,14 @@
 				high-quality, nutrient-rich, nutritional products that <em>enhance
 					active lifestyles</em>.
 			</p>
-			<%
-				if (session.getAttribute("noofproducts") != null) {
-			%>
-			<span id="size"
-				title="<%=(ArrayList) session.getAttribute("noofproducts")%>">Items
-				in Cart: <%=((ArrayList) session.getAttribute("noofproducts")).size()%></span>
-			<%
-				} else {
-			%>
-			<span id="size">Items in Cart: 0</span>
-			<%
-				}
-			%>
-
-		</div>
+                        <%if(session.getAttribute("cart")!=null){%>
+                        <p>
+                            <span id="size" title="<%=((ArrayList)session.getAttribute("cart"))%>">Items in Cart: <%=((ArrayList)session.getAttribute("cart")).size()%></span>
+                        </p>
+                        <%}else{%>
+                        <span id="size">Items in Cart: 0</span>
+                        <%}%>
+                </div>
 
 
 		<%--fetch he products from the rqq object --%>
@@ -56,7 +49,7 @@
 				while (iterator.hasNext()) {
 					Product product = iterator.next();
 			%>
-			<form method="get" action="products">
+			<form method="get" action="addProducts">
 
 				<div class="productContainerItem">
 					<img id="pic3" src="<%=product.getProductImgPath()%>"> <input
@@ -65,7 +58,7 @@
 				</div>
 			</form>
 			<%
-				}
+				}                               
 			%>
 		</div>
 	</section>
