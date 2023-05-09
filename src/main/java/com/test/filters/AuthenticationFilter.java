@@ -7,8 +7,11 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+@WebFilter("/*")
 public class AuthenticationFilter implements Filter {
 
     @Override
@@ -19,9 +22,20 @@ public class AuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest)request;
-        if(req.getRequestURI().startsWith("/SampleProject/orderHistory") || req.getRequestURI().startsWith("/SampleProject/getProfileDetails")){
+        //pre-processing
+        if(req.getRequestURI().startsWith("/SampleProject/orderHistory") ||
+           req.getRequestURI().startsWith("/SampleProject/getProfileDetails")){
             
+            HttpSession session = req.getSession();
+            if(session.getAttribute("username")==null){
+                req.getRequestDispatcher("/html/login.jsp").forward(req, response);
+            }
         }
+        //lleva el control del siguiente servlet
+        chain.doFilter(req, response);
+        
+        //post-processing
+        
     }
 
     @Override
