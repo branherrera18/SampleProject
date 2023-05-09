@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -22,6 +23,19 @@ public class LoginServlet extends HttpServlet {
         //this combine
         dispatcher.include(req, resp);
     }
-    
-    
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //get the username from the login form
+        String username = req.getParameter("username");
+        
+        //set up the http session
+        HttpSession session = req.getSession();
+        
+        //set the username as an attribute
+        session.setAttribute("username", username);
+        
+        //forward to home jsp
+        req.getRequestDispatcher("/html/home.jsp").forward(req, resp);
+    }
 }

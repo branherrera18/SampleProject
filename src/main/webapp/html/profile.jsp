@@ -1,7 +1,7 @@
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="ex" uri="http://www.ketkee.com/dateFormatter"%>
+<%@taglib uri="http://www.SampleProject.com/apptags" prefix="myTags" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -23,8 +23,7 @@
 					<li><a href="home">home</a></li>
 					<li><a href="orderHistory">order history</a></li>
 					<!-- <li><a href="viewProfile">view my profile</a></li> -->
-					<li><a href='<%=response.encodeURL("viewProfile")%>'>view
-							my profile</a></li>
+					<li><a href=''>view my profile</a></li>
 					<li><a href='logout'>logout</a></li>
 					<li><a href="redirect">linkedIn</a></li>
 
@@ -33,19 +32,9 @@
 			</div>
 			<!-- container nav-elements -->
 		</nav>
-		<!-- <div class="container tagline">
-    <h1 class="headline">Our Mission</h1>
-    <p>We support and encourage <em>active and healthy</em> lifestyles, by offering <em>ethically sourced</em> and <em>eco-friendly</em> nutritional products for the <em>performance-driven</em> athlete.</p>
-  </div>container tagline -->
 	</header>
 
-	<jsp:useBean id="user" scope="request" type="com.test.beans.User"></jsp:useBean>
-	<section>
-
-		<ex:formatDate date="<%=Calendar.getInstance().getTime()%>"
-			format="dd-MM-YYYY hh:mm"></ex:formatDate>
-	</section>
-	
+	<myTags:formatDate date="<%=Calendar.getInstance().getTime() %>" format="dd-MM-YYYY"/>
 	<section id="profile" class="section">
 		<div class="container">
 			<h2 class="headline">My Profile</h2>
@@ -53,15 +42,15 @@
 
 				<tr>
 					<td>Username</td>
-					<td><jsp:getProperty property="username" name="user" /></td>
+					<td>${user.username}</td>
 				</tr>
 				<tr>
 					<td>First Name</td>
-					<td><jsp:getProperty property="firstName" name="user" /></td>
+					<td>${user.firstName}</td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><jsp:getProperty property="lastName" name="user" /></td>
+					<td>${user.lastName}</td>
 				</tr>
 				<tr>
 					<td>Age</td>
@@ -70,6 +59,25 @@
 				<tr>
 					<td>Interested in</td>
 					<td>${user.activity}</td>
+				</tr>
+
+			</table>
+			</div>
+			<div class="container">
+			<h2 class="headline">Weight Summary</h2>
+			<table id="weightSummary">
+
+				<tr>
+					<td>January</td>
+					<td>${requestScope.weightSummary["January"]*2}</td>
+				</tr>
+				<tr>
+					<td>February</td>
+					<td>${requestScope.weightSummary["February"]/2}</td>
+				</tr>
+				<tr>
+					<td>March</td>
+					<td>${requestScope.weightSummary["March"]}</td>
 				</tr>
 
 			</table>
