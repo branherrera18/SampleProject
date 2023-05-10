@@ -27,6 +27,9 @@ public class User {
         this.activity = activity;
     }
 
+    public User() {
+    }
+
     
     public String getActivity() {
         return activity;
