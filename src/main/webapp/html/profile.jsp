@@ -35,7 +35,6 @@
 	</header>
 
 	<myTags:formatDate date="<%=Calendar.getInstance().getTime() %>" format="dd-MM-YYYY"/>
-        <jsp:useBean id="user" scope="request" type="com.test.beans.User"></jsp:useBean>
 	<section id="profile" class="section">
 		<div class="container">
 			<h2 class="headline">My Profile</h2>
@@ -43,23 +42,23 @@
 
 				<tr>
 					<td>Username</td>
-                                        <td><jsp:getProperty property="username" name="user"/></td>
+                                        <td>${user.username}</td>
 				</tr>
 				<tr>
 					<td>First Name</td>
-					<td><jsp:getProperty property="firstName" name="user"/></td>
+					<td>${user.firstName}</td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><jsp:getProperty property="lastName" name="user"/></td>
+					<td>${user.lastName}</td>
 				</tr>
 				<tr>
 					<td>Age</td>
-					<td><jsp:getProperty property="age" name="user"/></td>
+					<td>${user.age}</td>
 				</tr>
 				<tr>
 					<td>Interested in</td>
-					<td><jsp:getProperty property="activity" name="user"/></td>
+					<td>${user.activity}</td>
 				</tr>
 
 			</table>
