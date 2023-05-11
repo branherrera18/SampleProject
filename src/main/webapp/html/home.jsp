@@ -2,6 +2,7 @@
 <!--adding JSTL modules -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -39,16 +40,15 @@
 </div>container tagline -->
         </header>
 
-        <fmt:setBundle basename="com.test.resources.applicationResources"
-                       var="message" scope="session" />
 
+        <fmt:setBundle var="message" basename="com.test.resources.applicationResources"/>
         <section id="orders" class="section">
 
             <!--JSTL if tag-->
             <c:if test="${requestScope.orders!=null}">
                 <div class="container">
                     <h2 class="headline">
-
+                        <fmt:message bundle="${message}" key="label.header.orders"></fmt:message>
                     </h2>
                     <table id="orderHistory">
 
@@ -64,7 +64,7 @@
                             <tr>
                                 <td>${loop.count}</td>
                                 <td>${order.productName}</td>
-                                <td>${order.orderDate}</td>
+                                <td><fmt:formatDate value="${order.orderDate}" pattern="YYYY-MM-dd"></fmt:formatDate></td>
                                 <td><img width="200px" height="150px"
                                          src="${order.productImgPath}"></td>
                             </tr>
@@ -99,9 +99,5 @@
             <!-- container -->
         </footer>
         <!-- footer -->
-
-
-
-
     </body>
 </html>

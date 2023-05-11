@@ -58,7 +58,6 @@
     <listener>
         <listener-class>com.test.listeners.ApplicationListener</listener-class>
     </listener>
-
 </web-app>
 
 
